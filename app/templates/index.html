@@ -2,6 +2,35 @@
 
 {% block body %}
 
-Hello, World
+
+<div class="row" align="center">
+    <div class="col-xs-2 col-sm-2 piece">
+        {% if nav.prev %}
+            <a href="{{ url_for('index', comic_id=comic.id-1) }}">
+                <img src="{{ url_for('static', filename='img/previous.jpg') }}" />
+            </a>
+        {% else %}&nbsp;
+        {% endif %}
+    </div>
+    <div class="col-xs-14 col-sm-8 piece">
+        {% if comic.img %}
+            <img src="{{ url_for('static', filename='img/' + comic.img) }}" width="100%" />
+        {% endif %}
+    </div>
+    <!-- Optional: clear the XS cols if their content doesn't match in height -->
+    <div class="clearfix visible-xs-block"></div>
+    <div class="col-xs-2 col-sm-2 piece">
+        {% if nav.next %}
+            <a href="{{ url_for('index', comic_id=comic.id+1) }}">
+                <img src="{{ url_for('static', filename='img/next.jpg') }}" />
+            </a>
+        {% else %}&nbsp;
+        {% endif %}
+    </div>
+</div>
+<br/><br/>
+<div class="row" align="center">
+    <div class="col-md-12"><img src="{{ url_for('static', filename='img/banner.jpg') }}" width="100%" height="40%" /></div>
+</div>
 
 {% endblock %}
